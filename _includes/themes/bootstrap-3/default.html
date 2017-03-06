@@ -81,8 +81,6 @@
     <div id="footer">
       <div class="container">
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
         </p>
       </div>
     </div>
@@ -92,7 +90,20 @@
 
     <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{{ ASSET_PATH }}/bootstrap/js/jquery.3.1.1.slim.min.js"></script>
     <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+          $(".bs-docs-container h1,.bs-docs-container h2, .bs-docs-container h3, .bs-docs-container h4, .bs-docs-container h5, .bs-docs-container h6").each(function(i, el) {
+          var $el, icon, id;
+          $el = $(el);
+          id = $el.attr('id');
+          icon = '<span class="glyphicon glyphicon-link"></span>';
+          if (id) {
+            $el.prepend($("<a class='anchor' />").attr("href", "#" + id).html(icon));
+         }
+        })
+      });
+    </script>
   </body>
 </html>
